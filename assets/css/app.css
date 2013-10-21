@@ -348,6 +348,9 @@ body {
   font-size: 100%;
   line-height: 1.5; }
 
+h1 {
+  text-align: center; }
+
 p {
   font-size: rem(16px); }
 
@@ -356,3 +359,8 @@ a {
   text-decoration: none; }
   a:hover, a:focus {
     text-decoration: underline; }
+
+.container {
+  margin: 0 auto;
+  max-width: 600px;
+  width: 87.5%; }
