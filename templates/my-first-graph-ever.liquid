@@ -1,0 +1,49 @@
+{% block content %} 
+
+  <style>
+
+    .bar {
+      background: #f4bd7e;
+      display: inline-block;
+    }
+
+    .bar + .bar {
+      margin-left: 10px;
+    }
+
+  </style>
+
+  <section class="container graph--firstEver">  
+
+    <h2>My First Graph Ever</h2>
+	
+    <p>This is straight out of the book, using the basic data set.</p> 
+
+  </section>
+
+{% endblock %}
+
+{% block scripts %}
+
+  <script>
+      
+    var dataset = [ 5, 10, 15, 20, 25 ];
+
+    d3.select(".graph--firstEver").selectAll("div")
+      .data(dataset)
+      .enter()
+      .append("div")
+      .attr("class", "bar")
+      .style("width", function(d) {
+        var barWidth = d * 2.5;
+        return barWidth + "px";
+      })
+      // How would I chain these?
+      .style("height", function(d) {
+        var barHeight = d * 5;
+        return barHeight + "px";
+      });
+
+    </script>
+
+{% endblock %}

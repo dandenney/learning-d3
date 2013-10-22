@@ -18,8 +18,8 @@
     <!-- Content block, child page inject content -->
     {% block content %}{% endblock %}
     <!-- Script block allowing child pages to inject their own scripts -->
-    
     {{ "d3.js" | asset_url | script_tag }}
+    {% block scripts %}{% endblock %}
   </body>
 
 </html>

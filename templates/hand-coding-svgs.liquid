@@ -1,0 +1,48 @@
+{% block content %} 
+
+  <section class="container">  
+
+    <h2>Hand Coding SVGs</h2>
+	
+    <p>I've used SVGs for a while, but the book had a great explanation of them. I thought it was important to just create a few so that it is in my head when I'll be creating them dynamically.</p> 
+
+    <style>
+
+      .svg--rect {
+        fill: #c6573c;
+        stroke: #e48442;
+        stroke-width: 5;
+      }
+
+      .svg--circle {
+        fill: #80ac89;
+        opacity: 0.5;
+      }
+
+      .svg--circle--alt {
+        fill: #c9cc9e;
+        opacity: 0.5;
+      }
+
+      .svg--circle--alt--alt {
+        fill: #909172;
+        opacity: 0.5;
+      }
+
+    </style> 
+
+    <svg height="100" width="200">
+
+      <rect class="svg--rect" height="100" stroke="#000" width="200" x="0" y="0"  /> 
+
+    </svg>  
+
+    <svg height="150" width="150">  
+      <circle class="svg--circle" cx="50" cy="50" r="50" />
+      <circle class="svg--circle--alt" cx="100" cy="50" r="50" />
+      <circle class="svg--circle--alt--alt" cx="80" cy="95" r="50" />
+    </svg>
+
+  </section>
+
+{% endblock %}
