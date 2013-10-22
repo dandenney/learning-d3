@@ -11,6 +11,20 @@
       margin-left: 10px;
     }
 
+    .graph--firstRandom {
+      text-align: center;
+    }
+
+    .graph--full {
+      height: 500px;
+      overflow: hidden;
+    }
+
+    .graph--full .bar {
+      float: left;
+      margin: 0;
+    }
+
   </style>
 
   <section class="container graph--firstEver">  
@@ -18,6 +32,18 @@
     <h2>My First Graph Ever</h2>
 	
     <p>This is straight out of the book, using the basic data set.</p> 
+
+  </section>
+
+  <section class="graph--firstRandom">
+
+    <h2>My First Random (graph, that is)</h2>
+
+  </section>
+
+  <section class="graph--full">
+
+    <h2>Playing with a little something something</h2>
 
   </section>
 
@@ -43,6 +69,41 @@
         var barHeight = d * 5;
         return barHeight + "px";
       });
+
+      var datarandom = [];
+      for (var i = 0; i < 25; i++) {
+        var newNumber = Math.random() * 30;
+        datarandom.push(newNumber);
+      }
+
+      d3.select(".graph--firstRandom").selectAll("div")
+        .data(datarandom)
+        .enter()
+        .append("div")
+        .attr("class", "bar")
+        .style("height", function(d) {
+          var barHeight = d * 2.5;
+          return barHeight + "px";
+        })
+        .style("width", function(d) {
+          return d + "px";
+        });
+
+        var datafull = [10, 15, 20, 25, 30]; 
+
+        d3.select(".graph--full").selectAll("div")
+          .data(datafull)
+          .enter()
+          .append("div")
+          .attr("class", "bar")
+          .style("width", function(d) {
+            return d + "%";
+          })
+          .style("height", function(d) {
+            var scaleHeight = d * 3;
+            return scaleHeight + "%";
+          });
+
 
     </script>
 
