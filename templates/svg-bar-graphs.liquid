@@ -22,6 +22,14 @@
 
   </section>
 
+  <section class="container SVG--scatterplot">  
+
+    <h2>SVG Scatterplot</h2>
+  
+    <p>Scatter, scatter plot y'all</p> 
+
+  </section>
+
 
 {% endblock %}
 
@@ -95,6 +103,44 @@
         "text-anchor": "middle",
         fill: "white"
       })
+
+      // Scatterplot
+
+      var scatterData = [
+        [ 5, 20 ],
+        [ 480, 90 ],
+        [ 250, 50 ],
+        [ 100, 33 ],
+        [ 330, 93 ],
+        [ 410, 12 ],
+        [ 475, 44 ],
+        [ 25, 67 ],
+        [ 85, 21 ],
+        [ 220, 88 ]
+      ];
+
+      var scatterSVG = d3.select(".SVG--scatterplot")
+                    .append("svg")
+                    .attr({
+                      width: w,
+                      height: h
+                    })
+
+      scatterSVG.selectAll("circle")
+        .data(scatterData)
+        .enter()
+        .append("circle")
+        .attr({
+          cx: function(d) { 
+            return (d[0]);
+          },
+          cy: function(d) {
+            return d[1];
+          },
+          r: function(d) {
+            return Math.sqrt(d[1]);
+          }
+        })
 
 
   </script>
