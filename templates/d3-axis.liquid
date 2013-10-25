@@ -1,0 +1,210 @@
+{% block content %} 
+
+  <style>
+
+    .axis path,
+    .axis line {
+      fill: none;
+      stroke: #d5d5d5;
+      shape-rendering: crispEdges;
+    }
+
+    .axis text {
+      fill: #d5d5d5;
+      font-size: 11px;
+    }
+
+    
+
+  </style>
+
+  <section class="container SVG--scatterplot">  
+
+    <h2>D3 Axis</h2>
+  
+    <p>Creating an Axis, b.</p> 
+
+  </section>
+
+  <section class="container SVG--scatterrandom">  
+
+    <h2>D3 Axis</h2>
+  
+    <p>Creating an Axis, b.</p> 
+
+  </section>
+
+
+{% endblock %}
+
+{% block scripts %}
+
+  <script>
+
+    var h = 400;
+    var w = 600;
+    var padding = 30;
+    
+    // Scatterplot
+
+    var scatterData = [
+      [ 5, 20 ],
+      [ 480, 90 ],
+      [ 250, 50 ],
+      [ 100, 33 ],
+      [ 330, 93 ],
+      [ 410, 12 ],
+      [ 475, 44 ],
+      [ 25, 67 ],
+      [ 85, 21 ],
+      [ 220, 88 ]
+    ];
+
+    // Creates the SVG
+
+    var scatterSVG = d3.select(".SVG--scatterplot")
+      .append("svg")
+      .attr({
+        width: w,
+        height: h
+      })
+
+    // Sets the scale
+
+    var xScale = d3.scale.linear()
+      .domain([0, d3.max(scatterData, function(d) { return d[0] })])
+      .range([padding, w - padding]);
+
+    var yScale = d3.scale.linear()
+      .domain([0, d3.max(scatterData, function(d) { return d[1] })])
+      .range([h - padding, padding]);
+
+    // Creates the axes
+
+    var xAxis = d3.svg.axis()
+      .scale(xScale)
+      .orient("bottom")
+      .ticks("5");
+
+    var yAxis = d3.svg.axis()
+      .scale(yScale)
+      .orient("left")
+      .ticks("5");
+
+    // Creates the scatter circles from the data
+
+    scatterSVG.selectAll("circle")
+      .data(scatterData)
+      .enter()
+      .append("circle")
+      .attr({
+        cx: function(d) { 
+          return xScale(d[0]);
+        },
+        cy: function(d) {
+          return yScale(d[1]);
+        },
+        r: function(d) {
+          return Math.sqrt(d[1]);
+        },
+        fill: "#b51f24" 
+      })
+
+    scatterSVG.append("g")
+      .attr({
+        class: "axis",
+        transform: "translate(0," + (h - padding) + ")"
+      })
+      .call(xAxis);
+
+    scatterSVG.append("g")
+      .attr({
+        class: "axis",
+        transform: "translate(" + padding + ",0)"
+      })
+      .call(yAxis);
+
+    // ------------------------------------ //
+
+    // Dynamic Data
+
+    var dataRandom = [];
+    var numDataPoints = 50;
+    var xRange = Math.random() * 1000;
+    var yRange = Math.random() * 1000;
+    for (var i = 0; i < numDataPoints; i++) {
+      var newNumber1 = Math.floor(Math.random() * xRange);
+      var newNumber2 = Math.floor(Math.random() * yRange);
+      dataRandom.push([ newNumber1, newNumber2]);
+    }
+
+    // Creates the SVG
+
+    var randomSVG = d3.select(".SVG--scatterrandom")
+      .append("svg")
+      .attr({
+        width: w,
+        height: h
+      })
+
+    // Sets the scale
+
+    var xScaler = d3.scale.linear()
+      .domain([0, d3.max(dataRandom, function(d) { return d[0] })])
+      .range([padding, w - padding]);
+
+    var yScaler = d3.scale.linear()
+      .domain([0, d3.max(dataRandom, function(d) { return d[1] })])
+      .range([h - padding, padding]);
+
+    // Creates the axes
+
+    var xAxisr = d3.svg.axis()
+      .scale(xScaler)
+      .orient("bottom")
+      .ticks("5");
+
+    var yAxisr = d3.svg.axis()
+      .scale(yScaler)
+      .orient("left")
+      .ticks("5");
+
+    // Creates the scatter circles from the data
+
+    randomSVG.selectAll("circle")
+      .data(dataRandom)
+      .enter()
+      .append("circle")
+      .attr({
+        cx: function(d) { 
+          return xScaler(d[0]);
+        },
+        cy: function(d) {
+          return yScaler(d[1]);
+        },
+        r: function(d) {
+          return Math.sqrt(d[1] / 5);
+        },
+        fill: "#b51f24" 
+      })
+
+    randomSVG.append("g")
+      .attr({
+        class: "axis",
+        transform: "translate(0," + (h - padding) + ")"
+      })
+      .call(xAxisr);
+
+    randomSVG.append("g")
+      .attr({
+        class: "axis",
+        transform: "translate(" + padding + ",0)"
+      })
+      .call(yAxisr);
+
+
+
+
+  </script>
+
+{% endblock %}
