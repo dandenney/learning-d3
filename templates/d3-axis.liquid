@@ -14,6 +14,19 @@
       font-size: 11px;
     }
 
+    button {
+      background: #f5f5f5;
+      border: 1px solid #d5d5d5;
+      border-radius: 8px;
+      box-shadow: none;
+      color: #b51f24;
+      display: block;
+      line-height: 2;
+      margin: 1em auto;
+      padding: 0 1em;
+      width: auto;
+    }
+
     
 
   </style>
@@ -30,7 +43,9 @@
 
     <h2>D3 Axis</h2>
   
-    <p>Creating an Axis, b.</p> 
+    <p>Creating an Axis, b.</p>
+
+    <button id="splatter">Splatter</button> 
 
   </section>
 
@@ -201,6 +216,46 @@
         transform: "translate(" + padding + ",0)"
       })
       .call(yAxisr);
+
+    d3.select("#splatter")
+      
+      .on("click", function() {
+        
+        var dataRandom = [];
+        var numDataPoints = 50;
+        var xRange = Math.random() * 1000;
+        var yRange = Math.random() * 1000;
+        for (var i = 0; i < numDataPoints; i++) {
+          var newNumber1 = Math.floor(Math.random() * xRange);
+          var newNumber2 = Math.floor(Math.random() * yRange);
+          dataRandom.push([ newNumber1, newNumber2]);
+        }
+
+        var xScaler = d3.scale.linear()
+          .domain([0, d3.max(dataRandom, function(d) { return d[0] })])
+          .range([padding, w - padding]);
+
+        var yScaler = d3.scale.linear()
+          .domain([0, d3.max(dataRandom, function(d) { return d[1] })])
+          .range([h - padding, padding]);
+        
+        randomSVG.selectAll("circle")
+          .data(dataRandom)
+          .attr({
+            cx: function(d) { 
+              return xScaler(d[0]);
+            },
+            cy: function(d) {
+              return yScaler(d[1]);
+            },
+            r: function(d) {
+              return Math.sqrt(d[1] / 5);
+            },
+            fill: "#b51f24" 
+          })
+      
+      });
+
 
 
 
