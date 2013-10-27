@@ -14,6 +14,11 @@
       font-size: 11px;
     }
 
+    svg {
+      display: block;
+      margin: 0 auto;
+    }
+
     button {
       background: #f5f5f5;
       border: 1px solid #d5d5d5;
@@ -27,24 +32,63 @@
       width: auto;
     }
 
-    g.arc:nth-child(1) path {
-      fill: #c1dbd9;
+    g.arc path {
+      stroke-width: 2;
     }
 
-    g.arc:nth-child(2) path {
-      fill: #ced6e2;
+    g.arc text {
+      font-family: "ChunkFive"
     }
 
-    g.arc:nth-child(3) path {
-      fill: #aeaeae;
+    g.arc:nth-child(1) path,
+    .frontendconf-stack g:nth-child(1)
+     {
+      fill: #e1eeed;
+      stroke: #c1dbd9;
     }
 
-    g.arc:nth-child(4) path {
-      fill: #111;
+    g.arc:nth-child(1) text {
+      fill: #a1c8c5;
     }
 
-    g.arc:nth-child(5) path {
-      fill: #b51f24;
+    g.arc:nth-child(2) path,
+    .frontendconf-stack g:nth-child(2) {
+      fill: #eef1f5;
+      stroke: #ced6e2;
+    }
+
+    g.arc:nth-child(2) text {
+      fill: #aebbcf;
+    }
+
+    g.arc:nth-child(3) path,
+    .frontendconf-stack g:nth-child(3) {
+      fill: #c7c7c7;
+      stroke: #aeaeae;
+    }
+
+    g.arc:nth-child(3) text {
+      fill: #959595;
+    }
+
+    g.arc:nth-child(4) path,
+    .frontendconf-stack g:nth-child(4) {
+      fill: #2a2a2a;
+      stroke: #111;
+    }
+
+    g.arc:nth-child(4) text {
+      fill: #d5d5d5;
+    }
+
+    g.arc:nth-child(5) path,
+    .frontendconf-stack g:nth-child(5) {
+      fill: #db2c32;
+      stroke: #b51f24;
+    }
+
+    g.arc:nth-child(5) text {
+      fill: #fff;
     }
 
   </style>
@@ -52,6 +96,12 @@
   <section class="container frontendconf-pie">  
 
     <h2>Pie Chart of Front-End Conf Times Attending</h2>
+  
+  </section>
+
+  <section class="container frontendconf-stack">  
+
+    <h2>Stack Chart of Front-End Conf Times Attending</h2>
   
   </section>
 
@@ -63,809 +113,839 @@
 
    var attendees = [
       {
-        "Attended":"This is my first!",
-        "Date":"May 31, 2013"
+        "attended":"first",
+        "date":"May 31, 2013"
       },
       {
-        "Attended":"This is my second!",
-        "Date":"May 9, 2013"
+        "attended":"second",
+        "date":"May 9, 2013"
       },
       {
-        "Attended":"This is my first!",
-        "Date":"May 9, 2013"
+        "attended":"first",
+        "date":"May 9, 2013"
       },
       {
-        "Attended":"This is my second!",
-        "Date":"May 8, 2013"
+        "attended":"second",
+        "date":"May 8, 2013"
       },
       {
-        "Attended":"This is my second!",
-        "Date":"Apr 25, 2013"
+        "attended":"second",
+        "date":"Apr 25, 2013"
       },
       {
-        "Attended":"This is my first!",
-        "Date":"Apr 25, 2013"
+        "attended":"first",
+        "date":"Apr 25, 2013"
       },
       {
-        "Attended":"This is my second!",
-        "Date":"Apr 25, 2013"
+        "attended":"second",
+        "date":"Apr 25, 2013"
       },
       {
-        "Attended":"This is my first!",
-        "Date":"Apr 20, 2013"
+        "attended":"first",
+        "date":"Apr 20, 2013"
       },
       {
-        "Attended":"This is my first!",
-        "Date":"Apr 20, 2013"
+        "attended":"first",
+        "date":"Apr 20, 2013"
       },
       {
-        "Attended":"This is my first!",
-        "Date":"Apr 19, 2013"
+        "attended":"first",
+        "date":"Apr 19, 2013"
       },
       {
-        "Attended":"This is my first!",
-        "Date":"Apr 12, 2013"
+        "attended":"first",
+        "date":"Apr 12, 2013"
       },
       {
-        "Attended":"This is my first!",
-        "Date":"Apr 3, 2013"
+        "attended":"first",
+        "date":"Apr 3, 2013"
       },
       {
-        "Attended":"This is my fourth!",
-        "Date":"Apr 2, 2013"
+        "attended":"fourth",
+        "date":"Apr 2, 2013"
       },
       {
-        "Attended":"This is my first!",
-        "Date":"Apr 1, 2013"
+        "attended":"first",
+        "date":"Apr 1, 2013"
       },
       {
-        "Attended":"This is my second!",
-        "Date":"Mar 27, 2013"
+        "attended":"second",
+        "date":"Mar 27, 2013"
       },
       {
-        "Attended":"This is my first!",
-        "Date":"Mar 27, 2013"
+        "attended":"first",
+        "date":"Mar 27, 2013"
       },
       {
-        "Attended":"This is my first!",
-        "Date":"Mar 27, 2013"
+        "attended":"first",
+        "date":"Mar 27, 2013"
       },
       {
-        "Attended":"This is my second!",
-        "Date":"Mar 27, 2013"
+        "attended":"second",
+        "date":"Mar 27, 2013"
       },
       {
-        "Attended":"This is my first!",
-        "Date":"Mar 27, 2013"
+        "attended":"first",
+        "date":"Mar 27, 2013"
       },
       {
-        "Attended":"This is my first!",
-        "Date":"Mar 27, 2013"
+        "attended":"first",
+        "date":"Mar 27, 2013"
       },
       {
-        "Attended":"This is my first!",
-        "Date":"Mar 26, 2013"
+        "attended":"first",
+        "date":"Mar 26, 2013"
       },
       {
-        "Attended":"This is my first!",
-        "Date":"Mar 26, 2013"
+        "attended":"first",
+        "date":"Mar 26, 2013"
       },
       {
-        "Attended":"This is my third!",
-        "Date":"Mar 26, 2013"
+        "attended":"third",
+        "date":"Mar 26, 2013"
       },
       {
-        "Attended":"This is my first!",
-        "Date":"Mar 26, 2013"
+        "attended":"first",
+        "date":"Mar 26, 2013"
       },
       {
-        "Attended":"This is my second!",
-        "Date":"Mar 26, 2013"
+        "attended":"second",
+        "date":"Mar 26, 2013"
       },
       {
-        "Attended":"This is my second!",
-        "Date":"Mar 26, 2013"
+        "attended":"second",
+        "date":"Mar 26, 2013"
       },
       {
-        "Attended":"This is my first!",
-        "Date":"Mar 26, 2013"
+        "attended":"first",
+        "date":"Mar 26, 2013"
       },
       {
-        "Attended":"This is my first!",
-        "Date":"Mar 26, 2013"
+        "attended":"first",
+        "date":"Mar 26, 2013"
       },
       {
-        "Attended":"This is my first!",
-        "Date":"Mar 25, 2013"
+        "attended":"first",
+        "date":"Mar 25, 2013"
       },
       {
-        "Attended":"This is my third!",
-        "Date":"Mar 25, 2013"
+        "attended":"third",
+        "date":"Mar 25, 2013"
       },
       {
-        "Attended":"This is my first!",
-        "Date":"Mar 25, 2013"
+        "attended":"first",
+        "date":"Mar 25, 2013"
       },
       {
-        "Attended":"This is my first!",
-        "Date":"Mar 25, 2013"
+        "attended":"first",
+        "date":"Mar 25, 2013"
       },
       {
-        "Attended":"This is my second!",
-        "Date":"Mar 25, 2013"
+        "attended":"second",
+        "date":"Mar 25, 2013"
       },
       {
-        "Attended":"This is my first!",
-        "Date":"Mar 25, 2013"
+        "attended":"first",
+        "date":"Mar 25, 2013"
       },
       {
-        "Attended":"This is my first!",
-        "Date":"Mar 25, 2013"
+        "attended":"first",
+        "date":"Mar 25, 2013"
       },
       {
-        "Attended":"This is my second!",
-        "Date":"Mar 24, 2013"
+        "attended":"second",
+        "date":"Mar 24, 2013"
       },
       {
-        "Attended":"This is my second!",
-        "Date":"Mar 24, 2013"
+        "attended":"second",
+        "date":"Mar 24, 2013"
       },
       {
-        "Attended":"This is my third!",
-        "Date":"Mar 24, 2013"
+        "attended":"third",
+        "date":"Mar 24, 2013"
       },
       {
-        "Attended":"This is my first!",
-        "Date":"Mar 22, 2013"
+        "attended":"first",
+        "date":"Mar 22, 2013"
       },
       {
-        "Attended":"This is my first!",
-        "Date":"Mar 22, 2013"
+        "attended":"first",
+        "date":"Mar 22, 2013"
       },
       {
-        "Attended":"This is my second!",
-        "Date":"Mar 22, 2013"
+        "attended":"second",
+        "date":"Mar 22, 2013"
       },
       {
-        "Attended":"This is my first!",
-        "Date":"Mar 22, 2013"
+        "attended":"first",
+        "date":"Mar 22, 2013"
       },
       {
-        "Attended":"This is my third!",
-        "Date":"Mar 22, 2013"
+        "attended":"third",
+        "date":"Mar 22, 2013"
       },
       {
-        "Attended":"This is my first!",
-        "Date":"Mar 22, 2013"
+        "attended":"first",
+        "date":"Mar 22, 2013"
       },
       {
-        "Attended":"This is my second!",
-        "Date":"Mar 21, 2013"
+        "attended":"second",
+        "date":"Mar 21, 2013"
       },
       {
-        "Attended":"This is my first!",
-        "Date":"Mar 21, 2013"
+        "attended":"first",
+        "date":"Mar 21, 2013"
       },
       {
-        "Attended":"I've been to them all!",
-        "Date":"Mar 20, 2013"
+        "attended":"all",
+        "date":"Mar 20, 2013"
       },
       {
-        "Attended":"This is my first!",
-        "Date":"Mar 20, 2013"
+        "attended":"first",
+        "date":"Mar 20, 2013"
       },
       {
-        "Attended":"This is my first!",
-        "Date":"Mar 20, 2013"
+        "attended":"first",
+        "date":"Mar 20, 2013"
       },
       {
-        "Attended":"This is my first!",
-        "Date":"Mar 20, 2013"
+        "attended":"first",
+        "date":"Mar 20, 2013"
       },
       {
-        "Attended":"This is my second!",
-        "Date":"Mar 20, 2013"
+        "attended":"second",
+        "date":"Mar 20, 2013"
       },
       {
-        "Attended":"This is my second!",
-        "Date":"Mar 20, 2013"
+        "attended":"second",
+        "date":"Mar 20, 2013"
       },
       {
-        "Attended":"This is my first!",
-        "Date":"Mar 20, 2013"
+        "attended":"first",
+        "date":"Mar 20, 2013"
       },
       {
-        "Attended":"This is my second!",
-        "Date":"Mar 20, 2013"
+        "attended":"second",
+        "date":"Mar 20, 2013"
       },
       {
-        "Attended":"This is my first!",
-        "Date":"Mar 20, 2013"
+        "attended":"first",
+        "date":"Mar 20, 2013"
       },
       {
-        "Attended":"This is my second!",
-        "Date":"Mar 20, 2013"
+        "attended":"second",
+        "date":"Mar 20, 2013"
       },
       {
-        "Attended":"This is my first!",
-        "Date":"Mar 19, 2013"
+        "attended":"first",
+        "date":"Mar 19, 2013"
       },
       {
-        "Attended":"This is my first!",
-        "Date":"Mar 19, 2013"
+        "attended":"first",
+        "date":"Mar 19, 2013"
       },
       {
-        "Attended":"This is my second!",
-        "Date":"Mar 19, 2013"
+        "attended":"second",
+        "date":"Mar 19, 2013"
       },
       {
-        "Attended":"This is my first!",
-        "Date":"Mar 19, 2013"
+        "attended":"first",
+        "date":"Mar 19, 2013"
       },
       {
-        "Attended":"This is my first!",
-        "Date":"Mar 19, 2013"
+        "attended":"first",
+        "date":"Mar 19, 2013"
       },
       {
-        "Attended":"This is my first!",
-        "Date":"Mar 19, 2013"
+        "attended":"first",
+        "date":"Mar 19, 2013"
       },
       {
-        "Attended":"This is my first!",
-        "Date":"Mar 19, 2013"
+        "attended":"first",
+        "date":"Mar 19, 2013"
       },
       {
-        "Attended":"This is my first!",
-        "Date":"Mar 19, 2013"
+        "attended":"first",
+        "date":"Mar 19, 2013"
       },
       {
-        "Attended":"This is my first!",
-        "Date":"Mar 19, 2013"
+        "attended":"first",
+        "date":"Mar 19, 2013"
       },
       {
-        "Attended":"I've been to them all!",
-        "Date":"Mar 19, 2013"
+        "attended":"all",
+        "date":"Mar 19, 2013"
       },
       {
-        "Attended":"This is my first!",
-        "Date":"Mar 18, 2013"
+        "attended":"first",
+        "date":"Mar 18, 2013"
       },
       {
-        "Attended":"I've been to them all!",
-        "Date":"Mar 18, 2013"
+        "attended":"all",
+        "date":"Mar 18, 2013"
       },
       {
-        "Attended":"This is my second!",
-        "Date":"Mar 18, 2013"
+        "attended":"second",
+        "date":"Mar 18, 2013"
       },
       {
-        "Attended":"This is my second!",
-        "Date":"Mar 17, 2013"
+        "attended":"second",
+        "date":"Mar 17, 2013"
       },
       {
-        "Attended":"This is my first!",
-        "Date":"Mar 17, 2013"
+        "attended":"first",
+        "date":"Mar 17, 2013"
       },
       {
-        "Attended":"This is my third!",
-        "Date":"Mar 16, 2013"
+        "attended":"third",
+        "date":"Mar 16, 2013"
       },
       {
-        "Attended":"This is my first!",
-        "Date":"Mar 16, 2013"
+        "attended":"first",
+        "date":"Mar 16, 2013"
       },
       {
-        "Attended":"This is my first!",
-        "Date":"Mar 16, 2013"
+        "attended":"first",
+        "date":"Mar 16, 2013"
       },
       {
-        "Attended":"This is my second!",
-        "Date":"Mar 16, 2013"
+        "attended":"second",
+        "date":"Mar 16, 2013"
       },
       {
-        "Attended":"This is my second!",
-        "Date":"Mar 16, 2013"
+        "attended":"second",
+        "date":"Mar 16, 2013"
       },
       {
-        "Attended":"This is my fourth!",
-        "Date":"Mar 15, 2013"
+        "attended":"fourth",
+        "date":"Mar 15, 2013"
       },
       {
-        "Attended":"This is my first!",
-        "Date":"Mar 15, 2013"
+        "attended":"first",
+        "date":"Mar 15, 2013"
       },
       {
-        "Attended":"This is my second!",
-        "Date":"Mar 15, 2013"
+        "attended":"second",
+        "date":"Mar 15, 2013"
       },
       {
-        "Attended":"This is my first!",
-        "Date":"Mar 15, 2013"
+        "attended":"first",
+        "date":"Mar 15, 2013"
       },
       {
-        "Attended":"This is my first!",
-        "Date":"Mar 15, 2013"
+        "attended":"first",
+        "date":"Mar 15, 2013"
       },
       {
-        "Attended":"This is my first!",
-        "Date":"Mar 15, 2013"
+        "attended":"first",
+        "date":"Mar 15, 2013"
       },
       {
-        "Attended":"This is my first!",
-        "Date":"Mar 15, 2013"
+        "attended":"first",
+        "date":"Mar 15, 2013"
       },
       {
-        "Attended":"This is my first!",
-        "Date":"Mar 15, 2013"
+        "attended":"first",
+        "date":"Mar 15, 2013"
       },
       {
-        "Attended":"This is my fourth!",
-        "Date":"Mar 15, 2013"
+        "attended":"fourth",
+        "date":"Mar 15, 2013"
       },
       {
-        "Attended":"This is my third!",
-        "Date":"Mar 15, 2013"
+        "attended":"third",
+        "date":"Mar 15, 2013"
       },
       {
-        "Attended":"This is my first!",
-        "Date":"Mar 15, 2013"
+        "attended":"first",
+        "date":"Mar 15, 2013"
       },
       {
-        "Attended":"This is my first!",
-        "Date":"Mar 15, 2013"
+        "attended":"first",
+        "date":"Mar 15, 2013"
       },
       {
-        "Attended":"This is my first!",
-        "Date":"Mar 14, 2013"
+        "attended":"first",
+        "date":"Mar 14, 2013"
       },
       {
-        "Attended":"This is my first!",
-        "Date":"Mar 14, 2013"
+        "attended":"first",
+        "date":"Mar 14, 2013"
       },
       {
-        "Attended":"This is my first!",
-        "Date":"Mar 14, 2013"
+        "attended":"first",
+        "date":"Mar 14, 2013"
       },
       {
-        "Attended":"This is my first!",
-        "Date":"Mar 14, 2013"
+        "attended":"first",
+        "date":"Mar 14, 2013"
       },
       {
-        "Attended":"This is my first!",
-        "Date":"Mar 14, 2013"
+        "attended":"first",
+        "date":"Mar 14, 2013"
       },
       {
-        "Attended":"This is my first!",
-        "Date":"Mar 14, 2013"
+        "attended":"first",
+        "date":"Mar 14, 2013"
       },
       {
-        "Attended":"This is my first!",
-        "Date":"Mar 13, 2013"
+        "attended":"first",
+        "date":"Mar 13, 2013"
       },
       {
-        "Attended":"This is my second!",
-        "Date":"Mar 13, 2013"
+        "attended":"second",
+        "date":"Mar 13, 2013"
       },
       {
-        "Attended":"This is my fourth!",
-        "Date":"Mar 13, 2013"
+        "attended":"fourth",
+        "date":"Mar 13, 2013"
       },
       {
-        "Attended":"This is my second!",
-        "Date":"Mar 13, 2013"
+        "attended":"second",
+        "date":"Mar 13, 2013"
       },
       {
-        "Attended":"This is my first!",
-        "Date":"Mar 13, 2013"
+        "attended":"first",
+        "date":"Mar 13, 2013"
       },
       {
-        "Attended":"This is my third!",
-        "Date":"Mar 13, 2013"
+        "attended":"third",
+        "date":"Mar 13, 2013"
       },
       {
-        "Attended":"I've been to them all!",
-        "Date":"Mar 13, 2013"
+        "attended":"all",
+        "date":"Mar 13, 2013"
       },
       {
-        "Attended":"This is my second!",
-        "Date":"Mar 13, 2013"
+        "attended":"second",
+        "date":"Mar 13, 2013"
       },
       {
-        "Attended":"This is my second!",
-        "Date":"Mar 13, 2013"
+        "attended":"second",
+        "date":"Mar 13, 2013"
       },
       {
-        "Attended":"This is my second!",
-        "Date":"Mar 13, 2013"
+        "attended":"second",
+        "date":"Mar 13, 2013"
       },
       {
-        "Attended":"This is my second!",
-        "Date":"Mar 13, 2013"
+        "attended":"second",
+        "date":"Mar 13, 2013"
       },
       {
-        "Attended":"This is my second!",
-        "Date":"Mar 13, 2013"
+        "attended":"second",
+        "date":"Mar 13, 2013"
       },
       {
-        "Attended":"I've been to them all!",
-        "Date":"Mar 13, 2013"
+        "attended":"all",
+        "date":"Mar 13, 2013"
       },
       {
-        "Attended":"I've been to them all!",
-        "Date":"Mar 13, 2013"
+        "attended":"all",
+        "date":"Mar 13, 2013"
       },
       {
-        "Attended":"This is my third!",
-        "Date":"Mar 13, 2013"
+        "attended":"third",
+        "date":"Mar 13, 2013"
       },
       {
-        "Attended":"This is my third!",
-        "Date":"Mar 13, 2013"
+        "attended":"third",
+        "date":"Mar 13, 2013"
       },
       {
-        "Attended":"This is my first!",
-        "Date":"Mar 13, 2013"
+        "attended":"first",
+        "date":"Mar 13, 2013"
       },
       {
-        "Attended":"This is my fourth!",
-        "Date":"Mar 13, 2013"
+        "attended":"fourth",
+        "date":"Mar 13, 2013"
       },
       {
-        "Attended":"This is my first!",
-        "Date":"Mar 13, 2013"
+        "attended":"first",
+        "date":"Mar 13, 2013"
       },
       {
-        "Attended":"This is my fourth!",
-        "Date":"Mar 12, 2013"
+        "attended":"fourth",
+        "date":"Mar 12, 2013"
       },
       {
-        "Attended":"This is my third!",
-        "Date":"Mar 12, 2013"
+        "attended":"third",
+        "date":"Mar 12, 2013"
       },
       {
-        "Attended":"This is my first!",
-        "Date":"Mar 12, 2013"
+        "attended":"first",
+        "date":"Mar 12, 2013"
       },
       {
-        "Attended":"This is my fourth!",
-        "Date":"Mar 12, 2013"
+        "attended":"fourth",
+        "date":"Mar 12, 2013"
       },
       {
-        "Attended":"This is my third!",
-        "Date":"Mar 12, 2013"
+        "attended":"third",
+        "date":"Mar 12, 2013"
       },
       {
-        "Attended":"This is my first!",
-        "Date":"Mar 12, 2013"
+        "attended":"first",
+        "date":"Mar 12, 2013"
       },
       {
-        "Attended":"This is my first!",
-        "Date":"Mar 12, 2013"
+        "attended":"first",
+        "date":"Mar 12, 2013"
       },
       {
-        "Attended":"This is my first!",
-        "Date":"Mar 12, 2013"
+        "attended":"first",
+        "date":"Mar 12, 2013"
       },
       {
-        "Attended":"This is my third!",
-        "Date":"Mar 12, 2013"
+        "attended":"third",
+        "date":"Mar 12, 2013"
       },
       {
-        "Attended":"This is my second!",
-        "Date":"Mar 12, 2013"
+        "attended":"second",
+        "date":"Mar 12, 2013"
       },
       {
-        "Attended":"This is my third!",
-        "Date":"Mar 12, 2013"
+        "attended":"third",
+        "date":"Mar 12, 2013"
       },
       {
-        "Attended":"This is my first!",
-        "Date":"Mar 12, 2013"
+        "attended":"first",
+        "date":"Mar 12, 2013"
       },
       {
-        "Attended":"This is my first!",
-        "Date":"Mar 11, 2013"
+        "attended":"first",
+        "date":"Mar 11, 2013"
       },
       {
-        "Attended":"This is my first!",
-        "Date":"Mar 11, 2013"
+        "attended":"first",
+        "date":"Mar 11, 2013"
       },
       {
-        "Attended":"This is my second!",
-        "Date":"Mar 10, 2013"
+        "attended":"second",
+        "date":"Mar 10, 2013"
       },
       {
-        "Attended":"I've been to them all!",
-        "Date":"Mar 10, 2013"
+        "attended":"all",
+        "date":"Mar 10, 2013"
       },
       {
-        "Attended":"This is my first!",
-        "Date":"Mar 10, 2013"
+        "attended":"first",
+        "date":"Mar 10, 2013"
       },
       {
-        "Attended":"This is my first!",
-        "Date":"Mar 8, 2013"
+        "attended":"first",
+        "date":"Mar 8, 2013"
       },
       {
-        "Attended":"This is my first!",
-        "Date":"Mar 8, 2013"
+        "attended":"first",
+        "date":"Mar 8, 2013"
       },
       {
-        "Attended":"This is my first!",
-        "Date":"Mar 8, 2013"
+        "attended":"first",
+        "date":"Mar 8, 2013"
       },
       {
-        "Attended":"This is my third!",
-        "Date":"Mar 8, 2013"
+        "attended":"third",
+        "date":"Mar 8, 2013"
       },
       {
-        "Attended":"This is my first!",
-        "Date":"Mar 8, 2013"
+        "attended":"first",
+        "date":"Mar 8, 2013"
       },
       {
-        "Attended":"This is my first!",
-        "Date":"Mar 8, 2013"
+        "attended":"first",
+        "date":"Mar 8, 2013"
       },
       {
-        "Attended":"This is my fourth!",
-        "Date":"Mar 8, 2013"
+        "attended":"fourth",
+        "date":"Mar 8, 2013"
       },
       {
-        "Attended":"This is my first!",
-        "Date":"Mar 8, 2013"
+        "attended":"first",
+        "date":"Mar 8, 2013"
       },
       {
-        "Attended":"This is my first!",
-        "Date":"Mar 8, 2013"
+        "attended":"first",
+        "date":"Mar 8, 2013"
       },
       {
-        "Attended":"This is my first!",
-        "Date":"Mar 7, 2013"
+        "attended":"first",
+        "date":"Mar 7, 2013"
       },
       {
-        "Attended":"This is my third!",
-        "Date":"Mar 7, 2013"
+        "attended":"third",
+        "date":"Mar 7, 2013"
       },
       {
-        "Attended":"This is my second!",
-        "Date":"Mar 7, 2013"
+        "attended":"second",
+        "date":"Mar 7, 2013"
       },
       {
-        "Attended":"This is my first!",
-        "Date":"Mar 6, 2013"
+        "attended":"first",
+        "date":"Mar 6, 2013"
       },
       {
-        "Attended":"This is my third!",
-        "Date":"Mar 6, 2013"
+        "attended":"third",
+        "date":"Mar 6, 2013"
       },
       {
-        "Attended":"This is my second!",
-        "Date":"Mar 6, 2013"
+        "attended":"second",
+        "date":"Mar 6, 2013"
       },
       {
-        "Attended":"I've been to them all!",
-        "Date":"Mar 6, 2013"
+        "attended":"all",
+        "date":"Mar 6, 2013"
       },
       {
-        "Attended":"This is my first!",
-        "Date":"Mar 6, 2013"
+        "attended":"first",
+        "date":"Mar 6, 2013"
       },
       {
-        "Attended":"This is my first!",
-        "Date":"Mar 5, 2013"
+        "attended":"first",
+        "date":"Mar 5, 2013"
       },
       {
-        "Attended":"This is my first!",
-        "Date":"Mar 5, 2013"
+        "attended":"first",
+        "date":"Mar 5, 2013"
       },
       {
-        "Attended":"This is my third!",
-        "Date":"Mar 5, 2013"
+        "attended":"third",
+        "date":"Mar 5, 2013"
       },
       {
-        "Attended":"This is my second!",
-        "Date":"Mar 5, 2013"
+        "attended":"second",
+        "date":"Mar 5, 2013"
       },
       {
-        "Attended":"This is my first!",
-        "Date":"Mar 5, 2013"
+        "attended":"first",
+        "date":"Mar 5, 2013"
       },
       {
-        "Attended":"This is my third!",
-        "Date":"Mar 5, 2013"
+        "attended":"third",
+        "date":"Mar 5, 2013"
       },
       {
-        "Attended":"This is my second!",
-        "Date":"Mar 5, 2013"
+        "attended":"second",
+        "date":"Mar 5, 2013"
       },
       {
-        "Attended":"This is my second!",
-        "Date":"Mar 5, 2013"
+        "attended":"second",
+        "date":"Mar 5, 2013"
       },
       {
-        "Attended":"This is my third!",
-        "Date":"Mar 4, 2013"
+        "attended":"third",
+        "date":"Mar 4, 2013"
       },
       {
-        "Attended":"This is my third!",
-        "Date":"Mar 4, 2013"
+        "attended":"third",
+        "date":"Mar 4, 2013"
       },
       {
-        "Attended":"This is my first!",
-        "Date":"Mar 4, 2013"
+        "attended":"first",
+        "date":"Mar 4, 2013"
       },
       {
-        "Attended":"This is my third!",
-        "Date":"Mar 4, 2013"
+        "attended":"third",
+        "date":"Mar 4, 2013"
       },
       {
-        "Attended":"This is my first!",
-        "Date":"Mar 4, 2013"
+        "attended":"first",
+        "date":"Mar 4, 2013"
       },
       {
-        "Attended":"This is my second!",
-        "Date":"Mar 4, 2013"
+        "attended":"second",
+        "date":"Mar 4, 2013"
       },
       {
-        "Attended":"This is my second!",
-        "Date":"Mar 4, 2013"
+        "attended":"second",
+        "date":"Mar 4, 2013"
       },
       {
-        "Attended":"This is my second!",
-        "Date":"Mar 4, 2013"
+        "attended":"second",
+        "date":"Mar 4, 2013"
       },
       {
-        "Attended":"This is my second!",
-        "Date":"Mar 4, 2013"
+        "attended":"second",
+        "date":"Mar 4, 2013"
       },
       {
-        "Attended":"This is my second!",
-        "Date":"Mar 4, 2013"
+        "attended":"second",
+        "date":"Mar 4, 2013"
       },
       {
-        "Attended":"This is my second!",
-        "Date":"Mar 4, 2013"
+        "attended":"second",
+        "date":"Mar 4, 2013"
       },
       {
-        "Attended":"This is my third!",
-        "Date":"Mar 4, 2013"
+        "attended":"third",
+        "date":"Mar 4, 2013"
       },
       {
-        "Attended":"This is my third!",
-        "Date":"Mar 4, 2013"
+        "attended":"third",
+        "date":"Mar 4, 2013"
       },
       {
-        "Attended":"This is my second!",
-        "Date":"Mar 4, 2013"
+        "attended":"second",
+        "date":"Mar 4, 2013"
       },
       {
-        "Attended":"This is my first!",
-        "Date":"Mar 4, 2013"
+        "attended":"first",
+        "date":"Mar 4, 2013"
       },
       {
-        "Attended":"I've been to them all!",
-        "Date":"Mar 4, 2013"
+        "attended":"all",
+        "date":"Mar 4, 2013"
       },
       {
-        "Attended":"This is my fourth!",
-        "Date":"Mar 4, 2013"
+        "attended":"fourth",
+        "date":"Mar 4, 2013"
       },
       {
-        "Attended":"This is my first!",
-        "Date":"Mar 4, 2013"
+        "attended":"first",
+        "date":"Mar 4, 2013"
       },
       {
-        "Attended":"I've been to them all!",
-        "Date":"Mar 4, 2013"
+        "attended":"all",
+        "date":"Mar 4, 2013"
       },
       {
-        "Attended":"This is my third!",
-        "Date":"Mar 4, 2013"
+        "attended":"third",
+        "date":"Mar 4, 2013"
       },
       {
-        "Attended":"This is my first!",
-        "Date":"Mar 4, 2013"
+        "attended":"first",
+        "date":"Mar 4, 2013"
       },
       {
-        "Attended":"This is my first!",
-        "Date":"Mar 4, 2013"
+        "attended":"first",
+        "date":"Mar 4, 2013"
       },
       {
-        "Attended":"This is my second!",
-        "Date":"Mar 4, 2013"
+        "attended":"second",
+        "date":"Mar 4, 2013"
       },
       {
-        "Attended":"This is my second!",
-        "Date":"Mar 4, 2013"
+        "attended":"second",
+        "date":"Mar 4, 2013"
       },
       {
-        "Attended":"This is my third!",
-        "Date":"Mar 4, 2013"
+        "attended":"third",
+        "date":"Mar 4, 2013"
       },
       {
-        "Attended":"This is my second!",
-        "Date":"Mar 4, 2013"
+        "attended":"second",
+        "date":"Mar 4, 2013"
       },
       {
-        "Attended":"This is my third!",
-        "Date":"Mar 4, 2013"
+        "attended":"third",
+        "date":"Mar 4, 2013"
       },
       {
-        "Attended":"This is my third!",
-        "Date":"Mar 4, 2013"
+        "attended":"third",
+        "date":"Mar 4, 2013"
       },
       {
-        "Attended":"This is my third!",
-        "Date":"Mar 4, 2013"
+        "attended":"third",
+        "date":"Mar 4, 2013"
       },
       {
-        "Attended":"This is my fourth!",
-        "Date":"Mar 4, 2013"
+        "attended":"fourth",
+        "date":"Mar 4, 2013"
       },
       {
-        "Attended":"This is my first!",
-        "Date":"Mar 4, 2013"
+        "attended":"first",
+        "date":"Mar 4, 2013"
       },
       {
-        "Attended":"This is my first!",
-        "Date":"Mar 4, 2013"
+        "attended":"first",
+        "date":"Mar 4, 2013"
       },
       {
-        "Attended":"This is my second!",
-        "Date":"Mar 4, 2013"
+        "attended":"second",
+        "date":"Mar 4, 2013"
       },
       {
-        "Attended":"This is my fourth!",
-        "Date":"Mar 4, 2013"
+        "attended":"fourth",
+        "date":"Mar 4, 2013"
       },
       {
-        "Attended":"This is my second!",
-        "Date":"Mar 4, 2013"
+        "attended":"second",
+        "date":"Mar 4, 2013"
       },
       {
-        "Attended":"This is my second!",
-        "Date":"Mar 4, 2013"
+        "attended":"second",
+        "date":"Mar 4, 2013"
       },
       {
-        "Attended":"This is my second!",
-        "Date":"Mar 4, 2013"
+        "attended":"second",
+        "date":"Mar 4, 2013"
       },
       {
-        "Attended":"This is my second!",
-        "Date":"Mar 4, 2013"
+        "attended":"second",
+        "date":"Mar 4, 2013"
       },
       {
-        "Attended":"This is my second!",
-        "Date":"Mar 4, 2013"
+        "attended":"second",
+        "date":"Mar 4, 2013"
       },
       {
-        "Attended":"This is my third!",
-        "Date":"Mar 4, 2013"
+        "attended":"third",
+        "date":"Mar 4, 2013"
       },
       {
-        "Attended":"I've been to them all!",
-        "Date":"Mar 4, 2013"
+        "attended":"all",
+        "date":"Mar 4, 2013"
       },
       {
-        "Attended":"This is my fourth!",
-        "Date":"Mar 4, 2013"
+        "attended":"fourth",
+        "date":"Mar 4, 2013"
       },
       {
-        "Attended":"This is my third!",
-        "Date":"Mar 4, 2013"
+        "attended":"third",
+        "date":"Mar 4, 2013"
       },
       {
-        "Attended":"This is my third!",
-        "Date":"Mar 4, 2013"
+        "attended":"third",
+        "date":"Mar 4, 2013"
       },
       {
-        "Attended":"This is my third!",
-        "Date":"Mar 4, 2013"
+        "attended":"third",
+        "date":"Mar 4, 2013"
       },
       {
-        "Attended":"I've been to them all!",
-        "Date":"Mar 3, 2013"
+        "attended":"all",
+        "date":"Mar 3, 2013"
       }
+    ];
+
+    var attendeesSample = [
+      
+      [
+        { x: 0, y: 0 },
+        { x: 0, y: 8 },
+        { x: 0, y: 3 }
+      ],
+      [
+        { x: 0, y: 0 },
+        { x: 0, y: 16 },
+        { x: 0, y: 3 }
+      ],
+      [
+        { x: 0, y: 0 },
+        { x: 0, y: 14 },
+        { x: 0, y: 2 }
+      ],
+      [
+        { x: 0, y: 0 },
+        { x: 0, y: 4 },
+        { x: 0, y: 0 }
+      ],
+      [
+        { x: 0, y: 1 },
+        { x: 0, y: 3 },
+        { x: 0, y: 5 }
+      ]
+    
     ];
 
     // Pie chart of ratio
@@ -878,15 +958,15 @@
 
     var attendedPie = d3.layout.pie();
 
-    var pieW = 500;
-    var pieH = 500;
-    var piePadding = 20;
+    var pieW = 300;
+    var pieH = 300;
+    var piePadding = 10;
 
     var outerRadius = pieW / 2;
-    var innerRadius = pieW / 2.4; // Probably need a non-magic number
+    var innerRadius = pieW / 4.5; // Probably need a non-magic number
     var arc = d3.svg.arc()
       .innerRadius(innerRadius)
-      .outerRadius(outerRadius);
+      .outerRadius(outerRadius - piePadding);
 
     // Create the SVG
     var pieSVG = d3.select(".frontendconf-pie")
@@ -921,6 +1001,66 @@
       .text(function(d) {
         return d.value;
       });
+
+    // --------------------------------------------------- //
+
+    // Create the stack method
+    var frontendconfStack = d3.layout.stack();
+    
+    // Assign the data
+    frontendconfStack(attendeesSample);
+
+    // Assign base variables
+    var stackH = 400;
+    var stackW = 600;
+    var stackPadding = 50;
+
+    // Set up scales
+    var xScale = d3.scale.ordinal()
+      .domain(d3.range(attendeesSample[0].length))
+      .rangeRoundBands([0, stackW], 0.05);
+
+    var yScale = d3.scale.linear()
+      .domain([0,
+        d3.max(attendeesSample, function(d) {
+          return d3.max(d, function(d) {
+            return d.y0 + d.y;
+          });
+        })
+      ])
+      .range([0, stackH]);
+
+    // Creates SVG
+    var stackSVG = d3.select(".frontendconf-stack")
+      .append("svg")
+      .attr({
+        height: stackH,
+        width: stackW
+      })
+
+    // Create groups
+    var groups = stackSVG.selectAll("g")
+      .data(attendeesSample)
+      .enter()
+      .append("g")
+
+    // Creates bars
+    var rects = groups.selectAll("circle")
+      .data(function(d) { return d; })
+      .enter()
+      .append("circle")
+      .attr("cx", function(d, i) {
+        return xScale(i);
+      })
+      .attr("cy", function(d) {
+        return yScale(d.y0);
+      })
+      .attr("r", "5")
+      .attr("class", "stackRect")
+      .attr("width", xScale.rangeBand());
+
+
+   
 
   </script>
 
